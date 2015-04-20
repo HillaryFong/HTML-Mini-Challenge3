@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <style>
+            #result{
+                background-color: pink;
+                font-size: 20pt;
+                height: 100px;
+				overflow: scroll;
+                padding:50px;
+            }   #result2{
+                background-color: pink;
+                font-size: 20pt;
+                height: 100px;
+				overflow: scroll;
+                padding:50px;
+            }   #result3{
+                background-color: pink;
+                font-size: 20pt;
+                height: 100px;
+				overflow: scroll;
+                padding:50px;
+            } 
+			
+			#totalPrice{
+                background-color: green;
+                font-size: 20pt;
+                height: 40px;
+                padding:25px;
+            }
+			#b1, #b2 {
+  padding:5px;
+  background-color: orange;
+  border: 1px solid red;
+  color:#000;
+  text-decoration:none;
+}
+        </style>
+        
+        <script src="jquery-2.1.1.js"></script>
+        <script>
+		var total=0;
+		var appq=0;
+		var banq=0;
+		var oraq=0;
+		
+				 var price=0;
+				 var price2=0;
+				 var price3=0;
+	//	function addTotal(x, y)
+	//	{
+	//	   total = total+x*y;
+	//	}
+
+            // YOUR JOB: When #comboBox is "changed", put the value of the selected option in the result div
+            
+       
+            $(document).ready(function(){
+                // set the listener here calling the changedSelect function
+                // HINT: Use .change as you would use .click
+               // $("#comboBox").change(changedSelect($("#comboBox").val());
+        //        $("#comboBox").change(changedSelect($("#comboBox").val());
+				 $('#b1').click(changedSelect);
+				 $('#b2').click(printTotal);
+				 
+            });
+
+            function changedSelect(){
+				var ctr = $('#comboBox').val();
+				var quantity;
+				var quantity2;
+				var quantity3;
+                console.log("called changedSelect function " + ctr);
+                // put the selected value in the div called result 
+                // HINT: Use .val();
+				 
+				 var msg="";
+				 var msg2="";
+				 var msg3="";
+				 var check=0;
+				 var check2=0;
+				 var check3=0;
+                switch(ctr)
+                {
+                    case 'Apple': msg = "Apple"; 
+					 quantity = document.getElementById('quantity').value;
+					appq= +appq + +quantity; price = appq*20;  check=1; console.log(appq);break;
+                    case 'Banana': msg2 = "Banana";  
+					quantity = document.getElementById('quantity').value;
+					banq= +banq + +quantity; price2 = banq*30;  check2=1; break;
+                    case 'Orange': msg3 = "Orange"; 
+                    quantity = document.getElementById('quantity').value;					
+					oraq= +oraq + +quantity; price3 = oraq*10; check3=1;break;
+					
+                }
+				total = +price + +price2 + +price3;
+				console.log(total);
+			//	$("#totalPrice").html("");
+			//	$('#b2').click($("#totalPrice").html("Total: "+total+" php"));
+				if(check)
+				$("#result").html(appq + "Apple" + "   " + price + "<br>");
+				if(check2)
+				$("#result2").html(banq +"Banana" + "   " + price2 + "<br>");
+				if(check3)
+				$("#result3").html(oraq + "Orange" + "   " + price3 + "<br>");
+            } 
+			
+			function printTotal(){
+				$('#b2').click($("#totalPrice").html("Total: "+total+" php"));
+            }
+
+        </script>
+    </head>
+    <body>
+        <select id="comboBox">
+            <option value="Apple">Apple</option>
+            <option value="Banana">Banana</option>
+            <option value="Orange">Orange</option>
+        </select>
+		Quantity:
+		<form name="myForm">
+		<input id="quantity" type="text">
+		</form>
+		  <button id ='b1'>Add to Cart</button>
+		  <button id ='b2'>Check Out</button>
+		  <br>
+		  <br>
+		
+		
+        <div id="result"></div> 
+        <div id="result2"></div> 
+        <div id="result3"></div> 
+		<div id="totalPrice"></div>
+		
+    </body>
+</html>
+
+<!--
+What do these do?
+.blur()
+.change()
+.focus()
+.select()
+.submit()
+.val()
+-->
